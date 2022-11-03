@@ -22,3 +22,5 @@ Game 3: The Glass Tile Game
 - If you jump on the tile made from real glass, you will fall through it, die and have to start over (the broken tiles will remain broken even after you start over and the placement of the tiles remains the same)
 - If you jump on the reinforced glass tile however, you can keep going
 - Jump past all the tiles to win the game
+
+Good luck!
