@@ -1,0 +1,11 @@
+Model Information:
+* title:	Small Cabin House
+* source:	https://sketchfab.com/3d-models/small-cabin-house-9c17c12568314e849a990628e0f4931f
+* author:	padmadev_designs (https://sketchfab.com/padmadev_designs)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Small Cabin House" (https://sketchfab.com/3d-models/small-cabin-house-9c17c12568314e849a990628e0f4931f) by padmadev_designs (https://sketchfab.com/padmadev_designs) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	squid_game
+* source:	https://sketchfab.com/3d-models/squid-game-7829fcb6e20145bd8b2e7eb80b95d3a1
+* author:	masterboon2 (https://sketchfab.com/masterboon2)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "squid_game" (https://sketchfab.com/3d-models/squid-game-7829fcb6e20145bd8b2e7eb80b95d3a1) by masterboon2 (https://sketchfab.com/masterboon2) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
