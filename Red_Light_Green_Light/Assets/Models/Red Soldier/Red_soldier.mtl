@@ -1,0 +1,15 @@
+# Blender MTL File: 'Red_soldier.blend'
+# Material Count: 1
+
+newmtl Red_soldier
+Ns 40.274997
+Ka 1.000000 1.000000 1.000000
+Kd 0.031399 0.031399 0.031399
+Ks 0.400763 0.400763 0.400763
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\skiller\\Downloads\\Textures pngs\\Ready\\Diff Color.png
+map_Ks C:\\Users\\skiller\\Downloads\\Textures pngs\\Ready\\Specular.png
+map_Ns C:\\Users\\skiller\\Downloads\\Textures pngs\\Ready\\Roughness.png
