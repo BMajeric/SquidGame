@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 lastPos;
     private float speed = 3f;
     private bool moving;
+    private float[] closure = new float[2];
+    private int canMove;
 
     // visage|SDK configurations
 #if !UNITY_WEBGL
@@ -47,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 #if UNITY_WEBGL
     public const int MAX_FACES = 1;
 #else
-    public const int MAX_FACES = 4;
+    public const int MAX_FACES = 2;
 #endif
 
     private bool trackerInited = false;
@@ -538,13 +540,31 @@ public class PlayerMovement : MonoBehaviour
 
         RefreshImage();
 
+        for (int i = 0; i < TrackerStatus.Length; i++)
+        {
+            if (TrackerStatus[i] == (int)TrackStatus.OK)
+            {
+                VisageTrackerNative._getEyeClosure(closure, i);
 
+                if (closure[0] == 1 || closure[1] == 1)
+                {
+                    canMove = 1;
+                    Debug.Log("Can move!");
+                }
+                else
+                {
+                    canMove = 0;
+                    Debug.Log("I aint moving!");
+                }
+            }
+            //Debug.Log(closure.ToString());
+        }
 
-        float z = Input.GetAxis("Vertical");
+        //float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.forward * z;
+        Vector3 move = transform.forward;
 
-        controller.Move(move * speed * Time.deltaTime);
+        controller.Move(move * canMove * speed * Time.deltaTime);
 
         Moved(); 
 
