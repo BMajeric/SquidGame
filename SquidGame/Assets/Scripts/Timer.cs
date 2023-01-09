@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
             currentTime -= Time.deltaTime;
 
             TimeSpan span = TimeSpan.FromSeconds(currentTime);
-            timerText.text = span.ToString(@"mm\:ss");
+            timerText.text = span.ToString(@"mm\:ss") + "\nLives: " + Globals.lives ;
         }else{
             Destroy(player.gameObject);
             SceneManager.LoadScene("GameOver");
