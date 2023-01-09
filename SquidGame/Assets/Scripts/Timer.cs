@@ -17,19 +17,20 @@ public class Timer : MonoBehaviour
     void Start()
     {
         currentTime = timer;
-        player = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentTime > 0){
+        if (currentTime > 0)
+        {
             currentTime -= Time.deltaTime;
 
             TimeSpan span = TimeSpan.FromSeconds(currentTime);
-            timerText.text = span.ToString(@"mm\:ss") + "\nLives: " + Globals.lives ;
-        }else{
-            Destroy(player.gameObject);
+            timerText.text = span.ToString(@"mm\:ss") + "\nLives: " + Globals.lives;
+        }
+        else
+        {
             SceneManager.LoadScene("GameOver");
         }
     }

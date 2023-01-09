@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class Globals : MonoBehaviour
 {
-  public static int lives;
+    public static int lives = 3;
+    public static bool mistake = false;
+
 }
