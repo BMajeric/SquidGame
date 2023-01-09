@@ -154,6 +154,7 @@ public class Tracker : MonoBehaviour
 #endif
 
     #endregion
+    private float[] closure = new float[2];
 
     #region Native code printing
 
@@ -366,6 +367,19 @@ public class Tracker : MonoBehaviour
             if (TrackerStatus[i] == (int)TrackStatus.OK)
             {
                 UpdateControllableObjects(i);
+
+                VisageTrackerNative._getEyeClosure(closure, i);
+
+                if (closure[0] == 1 || closure[1] == 1)
+                {
+                    //canMove = 1;
+                    Debug.Log("Can move!");
+                }
+                else
+                {
+                    //canMove = 0;
+                    Debug.Log("I aint moving!");
+                }
 
                 if (!texCoordsStaticLoaded)
                 {
