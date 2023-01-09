@@ -11,9 +11,13 @@ public class Robot : MonoBehaviour
     private float timer = 5f;
     private float currentTimer;
     private Animator animator;
+    private bool respawned = false;
     //private OkreniSe lutka;
     private PlayerMovement player;
     private RobotStates currentState = RobotStates.Counting;
+
+    [SerializeField] private Transform pl;
+    [SerializeField] private Transform respawn;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,7 @@ public class Robot : MonoBehaviour
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerMovement>();
         currentTimer = timer;
+        Globals.lives = 3;
     }
 
     // Update is called once per frame
@@ -53,6 +58,15 @@ public class Robot : MonoBehaviour
             currentTimer = currentTimer-Time.deltaTime;
             
             if(player.isMoving()){
+                if(Globals.lives > 0){
+                    if(respawned == false){
+                        Globals.lives--;
+                    }
+                    respawned = true;    
+                    pl.transform.position = respawn.transform.position;
+                }
+            }
+            if(Globals.lives == 0){
                 Destroy(player.gameObject);
                 SceneManager.LoadScene("GameOver");
             }
@@ -60,7 +74,7 @@ public class Robot : MonoBehaviour
         }else{
             currentTimer = timer;
             animator.SetTrigger("Look");
-
+            respawned = false;
             jingleSource.Play();
             currentState = RobotStates.Counting;
         }
