@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 enum RobotStates{ Counting, Looking}
 
@@ -19,6 +20,8 @@ public class Robot : MonoBehaviour
     [SerializeField] private Transform pl;
     [SerializeField] private Transform respawn;
 
+    [SerializeField] private Image[] hearts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,18 @@ public class Robot : MonoBehaviour
     {
         if(player != null){
             StateMachine();
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Globals.lives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
         }
         
     }

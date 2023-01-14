@@ -549,12 +549,12 @@ public class PlayerMovement : MonoBehaviour
                 if (closure[0] == 1 || closure[1] == 1)
                 {
                     canMove = 1;
-                    Debug.Log("Can move!");
+                    //Debug.Log("Can move!");
                 }
                 else
                 {
                     canMove = 0;
-                    Debug.Log("I aint moving!");
+                    //Debug.Log("I aint moving!");
                 }
             }
             //Debug.Log(closure.ToString());

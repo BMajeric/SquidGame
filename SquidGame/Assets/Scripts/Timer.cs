@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
             currentTime -= Time.deltaTime;
 
             TimeSpan span = TimeSpan.FromSeconds(currentTime);
-            timerText.text = span.ToString(@"mm\:ss") + "\nLives: " + Globals.lives;
+            timerText.text = span.ToString(@"mm\:ss");
         }
         else
         {
