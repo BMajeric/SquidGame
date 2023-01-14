@@ -2,9 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Cookie : MonoBehaviour
 {
+    [SerializeField] private Image[] hearts;
+
+    private void Start()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Globals.lives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+    }
 
     /// <summary>
     /// Called every frame while the mouse is over the GUIElement or Collider.
@@ -23,6 +40,19 @@ public class Cookie : MonoBehaviour
             {
                 SceneManager.LoadScene("GameOver");
             }
+
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if (i < Globals.lives)
+                {
+                    hearts[i].enabled = true;
+                }
+                else
+                {
+                    hearts[i].enabled = false;
+                }
+            }
+
             Invoke("Restart", 1f);
 
         }

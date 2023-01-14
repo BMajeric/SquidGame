@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private float timer = 30f;
+    [SerializeField] private float timer = 45f;
     private float currentTime;
     private PlayerMovement player;
 
