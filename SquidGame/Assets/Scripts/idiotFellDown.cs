@@ -10,5 +10,6 @@ public class idiotFellDown : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        player.transform.position = respawn.transform.position;
+       Globals.lives--;
     }
 }
