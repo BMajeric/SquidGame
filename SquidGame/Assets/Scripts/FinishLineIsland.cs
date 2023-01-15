@@ -9,7 +9,8 @@ public class FinishLineIsland : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Invoke("loadaj", 3);
+        SceneManager.LoadScene("StartMenu");
+        //Invoke("loadaj",3 );
         
     }
     private void loadaj(){

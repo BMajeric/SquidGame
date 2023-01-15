@@ -10,6 +10,7 @@ public class GlassTIles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start");
         tiles[0] = GameObject.Find("Cube (10)");
         tiles[1] = GameObject.Find("Cube (9)");
         tiles[2] = GameObject.Find("Cube (8)");
@@ -37,10 +38,12 @@ public class GlassTIles : MonoBehaviour
         }
 
         for(int i = 0; i < 10; i++){
-            if(colliders[i].isTrigger){
-                 Debug.Log("Da");
-            }else{
-                Debug.Log("Ne");
+            if(!colliders[i].isTrigger){
+                if(i % 2 == 0){
+                    Debug.Log(" Desno");
+                }else{
+                    Debug.Log("Lijevo");
+                }    
             }
            
         }

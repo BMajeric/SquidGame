@@ -10,6 +10,12 @@ public class Teleport : MonoBehaviour
     public Transform pos4;
     public GameObject player;
 
+    public Transform pos1_old;
+    public Transform pos2_old;
+    public Transform pos3_old;
+    public Transform pos4_old;
+    int old_lives = Globals.lives;
+
 
     private bool first = true;
     private Vector3 distance1;
@@ -21,7 +27,6 @@ public class Teleport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         distance1 = pos3.transform.position - pos1.transform.position;
         distance2 = pos4.transform.position - pos1.transform.position;
         distance3 = pos4.transform.position - pos2.transform.position;
@@ -90,7 +95,13 @@ public class Teleport : MonoBehaviour
         }
 
 
-
+        if(old_lives != Globals.lives){
+            pos1.transform.position = pos1_old.transform.position;
+            pos2.transform.position = pos2_old.transform.position;
+            pos3.transform.position = pos3_old.transform.position;
+            pos4.transform.position = pos4_old.transform.position;
+            first = true;
+        }
 
     }
 }
