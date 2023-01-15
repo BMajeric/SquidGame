@@ -26,6 +26,6 @@ public class CookieManager : MonoBehaviour
         {
             if(!item.Done) return;
         }
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("GT game");
     }
 }
