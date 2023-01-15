@@ -90,6 +90,7 @@ public class Teleport : MonoBehaviour
                 player.transform.position = positions[step].transform.position;
                 step += 2;
                 Debug.Log(step);
+                Debug.Log(player.transform.position);
             }
             
 
@@ -130,6 +131,7 @@ public class Teleport : MonoBehaviour
                 player.transform.position = positions[step+1].transform.position;
                 step += 2;
                 Debug.Log(step);
+                Debug.Log(player.transform.position);
             }
             
         }
