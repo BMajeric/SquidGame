@@ -63,6 +63,12 @@ public class Teleport : MonoBehaviour
     private float chooseTime = 0f;
     private float chooseTimeDelay = 0.5f;
 
+    // Variables needed to implement game logic with visage|SDK
+    private float[] initialTranslation = new float[3];
+    private float[] translation = new float[3];
+    private float[] rotation = new float[3];
+
+
     // visage|SDK configurations
 #if !UNITY_WEBGL
     [HideInInspector]
@@ -118,8 +124,6 @@ public class Teleport : MonoBehaviour
     public Vector3[] Rotation = new Vector3[MAX_FACES];
     private bool isTracking = false;
     public int[] TrackerStatus = new int[MAX_FACES];
-    private float[] translation = new float[3];
-    private float[] rotation = new float[3];
 
     [Header("Camera settings")]
     public Material CameraViewMaterial;
@@ -313,6 +317,9 @@ public class Teleport : MonoBehaviour
 
         // Open camera in native code
         camInited = OpenCamera(Orientation, camDeviceId, defaultCameraWidth, defaultCameraHeight, isMirrored);
+
+        // Calculate the initial translation of the players head
+        VisageTrackerNative._getHeadTranslation(initialTranslation, 0);
 
     }
 
@@ -587,8 +594,14 @@ public class Teleport : MonoBehaviour
 
         RefreshImage();
 
+        // Calculate time passed since last input
         time = time + 1f * Time.deltaTime;
         chooseTime = chooseTime + 1f * Time.deltaTime;
+
+        // Get the translation and rotation values of the players face
+        VisageTrackerNative._getHeadTranslation(translation, 0);
+        VisageTrackerNative._getHeadRotation(rotation, 0);
+
 
         for (int i = 0; i < TrackerStatus.Length; i++)
         {
@@ -597,7 +610,8 @@ public class Teleport : MonoBehaviour
 
                 if (chooseTime>= chooseTimeDelay && step < 10)
                 {
-                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    // Input for Left
+                    if (initialTranslation[0] - translation[0] > 0.07f)
                     {
                         side = 0;
                         chooseTime = 0f;
@@ -607,8 +621,8 @@ public class Teleport : MonoBehaviour
                         tiles[step].GetComponent<MeshRenderer>().material = HighlightMaterial;
                         tiles[step+1].GetComponent<MeshRenderer>().material = BaseMaterial;
                     }
-
-                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    // Input for Right
+                    if (translation[0] - initialTranslation[0] > 0.07f)
                     {
                         side = 1;
                         chooseTime = 0f;
@@ -620,8 +634,9 @@ public class Teleport : MonoBehaviour
                     }
 
                 }
-
-                if (time >= timeDelay && Input.GetKeyDown(KeyCode.Space))
+                
+                // Input for Jump
+                if (time >= timeDelay && rotation[0] < -0.35)
                 {
                     if (side == 0)
                     {
