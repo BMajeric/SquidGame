@@ -32,6 +32,9 @@ public class Teleport : MonoBehaviour
     private Vector3 distance4;
     private bool left = false;
 
+    private float time = 0f;
+    private float timeDelay = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,84 +59,91 @@ public class Teleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        time = time + 1f * Time.deltaTime;
+        if (time >= timeDelay)
         {
-            /*
-            left = true;
-            if (first)
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                player.transform.position = pos1.transform.position;
-                first = false;
-            }
-            else
-            {
-                if (left)
+                /*
+                left = true;
+                if (first)
                 {
-                    pos1.transform.position += distance1;
-                    pos2.transform.position += distance1;
                     player.transform.position = pos1.transform.position;
-                    Debug.Log("Na lijevoj idem lijevo");
+                    first = false;
                 }
                 else
                 {
-                    pos1.transform.position += distance4;
-                    pos2.transform.position += distance4;
-                    player.transform.position = pos1.transform.position;
-                    Debug.Log("Na desnoj idem lijevo");
+                    if (left)
+                    {
+                        pos1.transform.position += distance1;
+                        pos2.transform.position += distance1;
+                        player.transform.position = pos1.transform.position;
+                        Debug.Log("Na lijevoj idem lijevo");
+                    }
+                    else
+                    {
+                        pos1.transform.position += distance4;
+                        pos2.transform.position += distance4;
+                        player.transform.position = pos1.transform.position;
+                        Debug.Log("Na desnoj idem lijevo");
+                    }
                 }
-            }
-            */
-            if(step >= 10 ){
-                player.transform.position = finish.transform.position;
-                Invoke("loadaj",3 );
-            }else{
-                player.transform.position = positions[step].transform.position;
-                step += 2;
-                Debug.Log(step);
-                Debug.Log(player.transform.position);
-            }
+                */
+                if(step >= 10 ){
+                    player.transform.position = finish.transform.position;
+                    Invoke("loadaj",3 );
+                }else{
+                    player.transform.position = positions[step].transform.position;
+                    step += 2;
+                    time = 0f;
+                    Debug.Log(step);
+                    Debug.Log(player.transform.position);
+                }
             
 
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-           /*
-            left = false;
-            if (first)
-            {
-                player.transform.position = pos2.transform.position;
-                first = false;
             }
-            else
-            {
-                if (!left)
-                {
-                    pos2.transform.position += distance3;
-                    pos1.transform.position += distance3;
-                    player.transform.position = pos2.transform.position;
 
-                    Debug.Log("Na desnoj idem desno");
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+               /*
+                left = false;
+                if (first)
+                {
+                    player.transform.position = pos2.transform.position;
+                    first = false;
                 }
                 else
                 {
-                    pos2.transform.position += distance2;
-                    pos1.transform.position += distance2;
-                    player.transform.position = pos2.transform.position;
-                    Debug.Log("Na lijevoj idem desno");
+                    if (!left)
+                    {
+                        pos2.transform.position += distance3;
+                        pos1.transform.position += distance3;
+                        player.transform.position = pos2.transform.position;
+
+                        Debug.Log("Na desnoj idem desno");
+                    }
+                    else
+                    {
+                        pos2.transform.position += distance2;
+                        pos1.transform.position += distance2;
+                        player.transform.position = pos2.transform.position;
+                        Debug.Log("Na lijevoj idem desno");
+                    }
                 }
-            }
-            */
-             if(step >= 10 ){
-                player.transform.position = finish.transform.position;
-                Invoke("loadaj",3 );
-            }else{
-                player.transform.position = positions[step+1].transform.position;
-                step += 2;
-                Debug.Log(step);
-                Debug.Log(player.transform.position);
-            }
+                */
+                 if(step >= 10 ){
+                    player.transform.position = finish.transform.position;
+                    Invoke("loadaj",3 );
+                }else{
+                    player.transform.position = positions[step+1].transform.position;
+                    step += 2;
+                    time = 0f;
+                    Debug.Log(step);
+                    Debug.Log(player.transform.position);
+                }
             
+            }
+
         }
 
 
@@ -143,6 +153,7 @@ public class Teleport : MonoBehaviour
         }
 
     }
+
     private void loadaj(){
         SceneManager.LoadScene("StartMenu");
     }
