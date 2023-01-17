@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CookieManager : MonoBehaviour
 {
     private Part[] parts;
-    
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -21,11 +21,12 @@ public class CookieManager : MonoBehaviour
     }
 
 
-    public void CheckForWin(){
+    public void CheckForWin()
+    {
         foreach (var item in parts)
         {
-            if(!item.Done) return;
+            if (!item.Done) return;
         }
-        SceneManager.LoadScene("GT game");
+        SceneManager.LoadScene("NextLevel2");
     }
 }
