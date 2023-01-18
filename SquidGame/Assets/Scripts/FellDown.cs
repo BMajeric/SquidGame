@@ -9,6 +9,7 @@ public class FellDown : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform respawn;
     [SerializeField] private Image[] hearts;
+    [SerializeField] private AudioSource deathSound;
 
     // Start is called before the first frame update
     private void Start()
@@ -32,6 +33,7 @@ public class FellDown : MonoBehaviour
 
       
        Globals.lives--;
+       deathSound.Play(); 
        if(Globals.lives == 0){
             SceneManager.LoadScene("GameOver");
        }

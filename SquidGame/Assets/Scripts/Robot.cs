@@ -9,6 +9,7 @@ enum RobotStates{ Counting, Looking}
 public class Robot : MonoBehaviour
 {
     [SerializeField] private AudioSource jingleSource; 
+    [SerializeField] private AudioSource deathSound; 
     private float timer = 5f;
     private float currentTimer;
     private Animator animator;
@@ -76,6 +77,7 @@ public class Robot : MonoBehaviour
                 if(Globals.lives > 0){
                     if(respawned == false){
                         Globals.lives--;
+                        deathSound.Play();
                     }
                     respawned = true;    
                     pl.transform.position = respawn.transform.position;
